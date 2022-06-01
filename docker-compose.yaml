@@ -1,0 +1,39 @@
+---
+
+version: '3.8'
+
+services:
+  #
+  # PostgreSQL
+  #
+  sample-pg:
+    image: postgres:14-bullseye
+    container_name: sample-pg
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: sample-user
+      POSTGRES_PASSWORD: sample-pass
+      POSTGRES_DB: sample-db
+      POSTGRES_INIT_DB_ARGS: --encoding=UTF-8
+    volumes:
+      - type: bind
+        source: ${PWD}/sql/
+        target: /docker-entrypoint-initdb.d/
+  #
+  # pgweb
+  #
+  pg-web:
+    image: sosedoff/pgweb
+    container_name: pg-web
+    ports:
+      - 8081:8081
+    environment:
+      DATABASE_URL: postgres://sample-user:sample-pass@sample-pg:5432/sample-db?sslmode=disable
+    depends_on:
+      - sample-pg
+    restart: always # sample-pgのコンテナではなくてDB起動するまでrestartしている
+
+networks:
+  default:
+    name: sample-network
