@@ -1,12 +1,11 @@
 DROP TABLE IF EXISTS customer;
 CREATE TABLE IF NOT EXISTS customer (
   id SERIAL,
-  last_name VARCHAR(255),
-  first_name VARCHAR(255)
+  first_name VARCHAR(255),
+  last_name VARCHAR(255)
 );
 
-INSERT INTO customer ( last_name, first_name ) VALUES
-  ( 'Jimmy', 'Butler' )
-  , ( 'LeBron', 'James' )
-  , ( 'Stephen', 'Curry' )
+INSERT INTO customer ( first_name, last_name ) VALUES
+  ( 'Alice', 'Sample1' )
+  , ( 'Bob', 'Sample2' )
 ;
