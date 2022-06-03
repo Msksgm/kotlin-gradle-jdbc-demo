@@ -1,13 +1,11 @@
 package com.example.kotlingradlejdbcdemo
 
 import org.springframework.jdbc.core.JdbcTemplate
-import org.springframework.stereotype.Component
 
 interface UpdateCommand {
     fun perform(lastName: String)
 }
 
-@Component
 class UpdateCommandImpl(val jdbcTemplate: JdbcTemplate) : UpdateCommand {
     val sql = """
         UPDATE

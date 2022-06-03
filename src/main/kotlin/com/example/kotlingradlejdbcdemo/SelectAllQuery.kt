@@ -1,13 +1,11 @@
 package com.example.kotlingradlejdbcdemo
 
 import org.springframework.jdbc.core.JdbcTemplate
-import org.springframework.stereotype.Component
 
 interface SelectAllQuery {
     fun perform(): List<Customer>
 }
 
-@Component
 class SelectAllQueryImpl(val jdbcTemplate: JdbcTemplate) : SelectAllQuery {
     val sql = """
         SELECT id, first_name, last_name
