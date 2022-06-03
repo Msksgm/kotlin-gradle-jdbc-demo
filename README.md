@@ -5,7 +5,7 @@
 # 実行方法
 
 ```bash:DBを起動
-docker-compose up sample-pg pg-web
+docker compose up
 ```
 
 ```bash:アプリケーションを実行
@@ -14,5 +14,5 @@ docker-compose up sample-pg pg-web
 ```
 
 ```bash:DBを停止 & 削除
-docker-compose down
+docker compose down
 ```
